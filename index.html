@@ -4,19 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Google fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Metal+Mania&family=Paytone+One&family=Space+Mono&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Agbalumo&family=Metal+Mania&family=Paytone+One&family=Space+Mono&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&family=Paytone+One&family=Space+Mono&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Agbalumo&family=Metal+Mania&family=Paytone+One&family=Space+Mono&display=swap" rel="stylesheet">
     <!-- Stylesheet -->
     <link rel="stylesheet" href="./style.css" />
     <title>Whiskers & Wag</title>
+    
   </head>
 
   <body>
@@ -26,23 +21,21 @@
         <div class="logo">
           <a>
             <img
-              src="./images/Wiskers and Wag.png"
+              src="./images/Wiskers and Wag.png" 
               alt="logo"
               width="128"
-              height="128"
-            />
+              height="128">
             <span>Whiskers & Wag</span>
           </a>
         </div>
 
-<body>
-  <header>
-    <!-- Navigation Links -->
-    <div class="top-header">
-      <div class="logo">
-        <a>
-          <img src="./images/Wiskers and Wag.png" alt="logo" width="128" height="128">
-          <span>Whiskers & Wag</span>
+        <a class="cart" href="./cart.html">
+          <img
+            src="./images/shopping_cart.png"
+            alt="shopping cart"
+            width="30"
+            height="30"
+          />
         </a>
       </div>
       <nav class="navbar-row">
@@ -54,9 +47,9 @@
     <main>
       <!-- Banner -->
       <div class="banner">
-        <h1>Your Pet's Paradise</h1>
+          <h1>Your Pet's Paradise</h1>
       </div>
-
+      
       <h2>NEW PRODUCTS!</h2>
       <!-- Products -->
       <section class="product-container">
@@ -66,9 +59,7 @@
             <h3>Cat Tree</h3>
             <p>$100</p>
           </div>
-          <button class="product-button" onclick="addToCart(1)">
-            Add to Cart
-          </button>
+          <button class="product-button">Add to Cart</button>
         </div>
         <div class="card">
           <img src="images/cat_food.webp" alt="Ziwi Peak air-dried cat food" />
@@ -76,9 +67,7 @@
             <h3>Cat Food</h3>
             <p>$1.50</p>
           </div>
-          <button class="product-button" onclick="addToCart(2)">
-            Add to Cart
-          </button>
+          <button class="product-button">Add to Cart</button>
         </div>
         <div class="card">
           <img src="images/dog_lead.webp" alt="Dog lead" />
@@ -86,9 +75,7 @@
             <h3>Dog Lead</h3>
             <p>$10</p>
           </div>
-          <button class="product-button" onclick="addToCart(3)">
-            Add to Cart
-          </button>
+          <button class="product-button">Add to Cart</button>
         </div>
         <div class="card">
           <img src="images/cat_bed.webp" alt="Cat bed" />
@@ -96,9 +83,7 @@
             <h3>Pet Bed</h3>
             <p>$30</p>
           </div>
-          <button class="product-button" onclick="addToCart(4)">
-            Add to Cart
-          </button>
+          <button class="product-button">Add to Cart</button>
         </div>
         <div class="card">
           <img src="images/dog_treat.webp" alt="Veggiedent dog treat" />
@@ -106,17 +91,19 @@
             <h3>Veggiedent</h3>
             <p>$12</p>
           </div>
-          <button class="product-button" onclick="addToCart(5)">
-            Add to Cart
-          </button>
+          <button class="product-button">Add to Cart</button>
         </div>
       </section>
     </main>
 
     <!-- Footer -->
     <footer>
+       <!-- TODO API CALL -->
+       <!-- ? -->
+       let endpoint = https://github.com/OnlineProjectsGit/API/blob/main/WDEndpoint.json
+       
       <p>© 2023 Whiskers & Wag</p>
     </footer>
-    <script src="./script.js"></script>
+
   </body>
 </html>
