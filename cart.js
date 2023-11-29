@@ -47,4 +47,3 @@ function updateCartDisplay() {
 
 // Initialize cart display and total on page load
 updateCartDisplay();
-updateCartTotal();
