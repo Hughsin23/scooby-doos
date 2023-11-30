@@ -76,7 +76,11 @@ const createCartItems = () => {
           <div class="content-right">
             <p>$ ${item.price * item.quantity}</p>
           </div>
-          
+          <div class="cart-right">
+              <button class="cart-button" onclick="updateItemQuantity(${item.id}, 0)"> 
+                <img src="./images/bin.png" alt="logo" width="20" height="20"> 
+              </button>
+          </div>
         </div>
       </div>
     `
