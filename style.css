@@ -25,7 +25,8 @@ header {
     background-color: var(--yellow);
 }
 
-h1, h2 {
+h1,
+h2 {
     text-align: center;
     font-size: 40px;
     letter-spacing: 2px;
@@ -79,10 +80,10 @@ h3 {
 
 /* Main */
 /* Banner */
-.banner  {
-    background-image:url(./images/banner.jpg);
+.banner {
+    background-image: url(./images/banner.jpg);
     background-size: 100%;
-    height:15vh;
+    height: 15vh;
     background-position: center;
     background-repeat: no-repeat;
     display: flex;
@@ -92,7 +93,7 @@ h3 {
 }
 
 .banner h1 {
-    font-family: 'Agbalumo', 'Paytone One',  Arial, sans-serif;
+    font-family: 'Agbalumo', 'Paytone One', Arial, sans-serif;
     text-transform: uppercase;
     text-shadow: 3px 3px 3px white;
 }
@@ -126,7 +127,8 @@ h3 {
     border-radius: 20px;
 }
 
-.product-row, .navbar-row {
+.product-row,
+.navbar-row {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -208,7 +210,7 @@ h3 {
     margin: 0 auto;
 }
 
-.cart-section {
+.cart-item {
     display: flex;
     align-items: center;
     padding: 20px;
@@ -293,8 +295,10 @@ h4 {
     margin: 0;
     margin-bottom: 12px;
     color: black;
-    padding-right: 2px; /* Add this line */
-    padding-left: 1px; /* Add this line */
+    padding-right: 2px;
+    /* Add this line */
+    padding-left: 1px;
+    /* Add this line */
 
 }
 
@@ -307,7 +311,8 @@ h4 {
         padding: 3% 6%;
     }
 
-    .product-container, h2 {
+    .product-container,
+    h2 {
         margin: 2% 1%;
     }
 
@@ -323,7 +328,8 @@ h4 {
         height: auto;
     }
 
-    .banner h1, h2 {
+    .banner h1,
+    h2 {
         font-size: larger;
     }
 
@@ -342,5 +348,5 @@ h4 {
     .cart-img {
         max-height: 100px;
         max-width: 100px;
-    }    
+    }
 }

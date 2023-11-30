@@ -33,7 +33,8 @@ const products = [
 ];
 
 // Cart array to store selected products
-const cart = [];
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+console.log(cart);
 
 // Function to dynamically render product cards
 function renderProducts() {
@@ -80,18 +81,41 @@ function addToCart(productId) {
     }
   }
 
-  cart.push(selectedProduct);
+  // Find if item exists in cart
+  const existingItemIndex = cart.findIndex((item) => item.id === productId);
+  if (existingItemIndex !== -1) {
+    cart[existingItemIndex].quantity++;
+  } else {
+    cart.push({
+      id: productId,
+      name: selectedProduct.name,
+      price: selectedProduct.price,
+      quantity: 1,
+      image: selectedProduct.image
+    });
+  }
 
-  // Log the cart for testing purposes (you can remove this in the final version)
-  console.log("Cart:", cart);
-
-  // Update the cart UI
+  // Save to localStorage and update display
+  localStorage.setItem("cart", JSON.stringify(cart));
   updateCartUI();
-
   renderProducts();
+
+  // Log information to the console
+  console.log("Added to Cart:", {
+    id: productId,
+    name: selectedProduct.name,
+    price: selectedProduct.price,
+    quantity: 1,
+    image: selectedProduct.image
+  });
 }
 
+
 // Function to update the cart UI
-function updateCartUI() {}
+function updateCartUI() {
+  const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  console.log("Cart Total:", total);
+  // Update the cart UI as needed
+}
 
 document.addEventListener("DOMContentLoaded", renderProducts);

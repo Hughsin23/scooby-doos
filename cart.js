@@ -1,49 +1,101 @@
 // Define an array to hold the cart items
-let cart = JSON.parse(localStorage.getItem('cart')) || [];
-console.log(cart);
+const clearBtn = document.getElementById('clear-cart')
+const cartContainer = document.querySelector('#cart-container')
 
-
-
-// Define the addToCart function
-function addToCart(itemId) {
-  // Retrieve item details from the DOM
-  const card = document.querySelector(`.card[data-id='${itemId}']`);
-  const itemName = card.querySelector('h3').textContent;
-  const itemPrice = parseFloat(card.querySelector('p').textContent.slice(1)); // Assuming price is in format "$XX.XX"
-
-  // Find if item exists in cart
-  const existingItemIndex = cart.findIndex(item => item.id === itemId);
-  if (existingItemIndex !== -1) {
-    cart[existingItemIndex].quantity++;
-  } else {
-    cart.push({ id: itemId, name: itemName, price: itemPrice, quantity: 1 });
-  }
-
-  // Save to localStorage and update display
-  localStorage.setItem('cart', JSON.stringify(cart));
-  updateCartTotal();
-  updateCartDisplay();
-}
-
-// Update Cart Total
+// just stole this from index, will make into modules if I have time.
 function updateCartTotal() {
-  const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-  document.querySelectorAll('#total-price').forEach(elem => {
-    elem.textContent = `$${total.toFixed(2)}`;
-  });
+  // grab cart every time, just in case.
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  // if there is no cart, stop there. if there is, calc the total and put it in the p 
+  if (!cart) {
+    console.log("No current cart")
+    return
+  } else {
+    const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+    console.log("Cart Total:", total);
+    const cartTotal = document.getElementById('cart-total')
+    cartTotal.innerHTML = `$ ${total}`
+  }
 }
 
-// Update Cart Display
-function updateCartDisplay() {
-  const cartItemsContainer = document.getElementById('cart-items');
-  cartItemsContainer.innerHTML = cart.map(item => `
-    <div class="cart-item">
-      <h3>${item.name}</h3>
-      <p>Price: $${item.price.toFixed(2)}</p>
-      <p>Quantity: ${item.quantity}</p>
-    </div>
-  `).join('');
+
+const updateItemQuantity = (itemId, newQuantity) => {
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  const index = cart.findIndex(item => item.id === itemId);
+  if (index !== -1) {
+    if (newQuantity > 0) {
+      cart[index].quantity = newQuantity;
+    } else {
+      cart.splice(index, 1);
+    }
+    localStorage.setItem('cart', JSON.stringify(cart))
+    createCartItems();
+    updateCartTotal()
+  }
 }
 
-// Initialize cart display and total on page load
-updateCartDisplay();
+const clearCart = () => {
+  localStorage.removeItem('cart')
+  cartContainer.innerHTML = ''
+  updateCartTotal()
+}
+
+const createCartItems = () => {
+  // re-get the cart every time, just in case anything has changed
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+  // reset the container, in the future (i guess with React), we can make it so it doesn't have to clear it entirely, simply add the one we mentioned)
+  cartContainer.innerHTML = ''
+
+  cart.forEach(item => {
+    const cartItem = document.createElement('div')
+    cartItem.classList.add('cart-item')
+
+    const itemValues = `
+    <div class="image-container">
+        <img class="cart-img" src="./${item.image}" alt="Pet item">
+      </div>
+      <div class="cart-container">
+        <div class="cart">
+          <div class="cart-left">
+            <h3>${item.name}</h3>
+          </div>
+          <div class="cart-right">
+          </div>
+        </div>
+        <div class="cart">
+          <div class="cart-left">
+            <button class="cart-button" onclick="updateItemQuantity(${item.id}, ${item.quantity - 1})">
+              -
+            </button>
+            <p>${item.quantity}</p>
+            <button class="cart-button" onclick="updateItemQuantity(${item.id}, ${item.quantity + 1})">
+              +
+            </button>
+          </div>
+          <div class="content-right">
+            <p>$ ${item.price * item.quantity}</p>
+          </div>
+          
+        </div>
+      </div>
+    `
+
+    cartItem.innerHTML = itemValues
+    cartContainer.appendChild(cartItem)
+
+
+  })
+
+
+
+
+
+
+}
+// localStorage.removeItem('cart')
+
+createCartItems()
+updateCartTotal()
+
+clearBtn.addEventListener('click', clearCart)
