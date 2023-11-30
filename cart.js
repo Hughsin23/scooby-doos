@@ -74,7 +74,7 @@ const createCartItems = () => {
             </button>
           </div>
           <div class="content-right">
-            <p>$ ${item.price * item.quantity}</p>
+            <p>Total for all your ${item.name} $ ${item.price * item.quantity}</p>
           </div>
           <div class="cart-right">
               <button class="cart-button" onclick="updateItemQuantity(${item.id}, 0)"> 
