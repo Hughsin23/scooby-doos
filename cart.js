@@ -53,7 +53,7 @@ const createCartItems = () => {
 
     const itemValues = `
     <div class="image-container">
-        <img class="cart-img" src="./${item.image}" alt="Pet item">
+        <img class="cart-img" src="${item.image}" alt="Pet item">
       </div>
       <div class="cart-container">
         <div class="cart">
@@ -74,7 +74,7 @@ const createCartItems = () => {
             </button>
           </div>
           <div class="content-right">
-            <p>Total for all your ${item.name} $ ${item.price * item.quantity}</p>
+            <p>Total for all your ${item.name} is $ ${item.price * item.quantity}</p>
           </div>
           <div class="cart-right">
               <button class="cart-button" onclick="updateItemQuantity(${item.id}, 0)"> 
@@ -103,3 +103,17 @@ createCartItems()
 updateCartTotal()
 
 clearBtn.addEventListener('click', clearCart)
+
+
+const time = () => {
+  let currentTime = new Date()
+
+  // the toLocaleTimeString formats the time nicely, into 00:00:00 style, can edit later on for if we don't want the seconds.
+  let localTime = currentTime.toLocaleTimeString('en-AU')
+
+  //then pin to doc, assuming we just have a section or something that makes us a clock
+  document.getElementById('clock').innerHTML = localTime
+
+}
+
+setInterval(time, 1000)

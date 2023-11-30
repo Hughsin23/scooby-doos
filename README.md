@@ -3,7 +3,7 @@
 
 ## Description
 This repository contains a JavaScript-based shopping cart project that demonstrates the implementation of a working shopping cart with key features such as dynamic rendering of products, add to cart functionality, and local storage integration.
-
+We also used a Trello board to keep track of task progress.
 
 ## Authors:
 __Hugh Sinclair__
@@ -74,3 +74,4 @@ We used a variety of tools and resources to collaborate, such as:
 * Zoom
 * Visual Studio Code
 * Live Share (Visual Studio Code's extension)
+* Trello

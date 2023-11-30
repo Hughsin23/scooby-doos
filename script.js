@@ -119,3 +119,16 @@ function updateCartUI() {
 }
 
 document.addEventListener("DOMContentLoaded", renderProducts);
+
+const time = () => {
+  let currentTime = new Date()
+
+  // the toLocaleTimeString formats the time nicely, into 00:00:00 style, can edit later on for if we don't want the seconds.
+  let localTime = currentTime.toLocaleTimeString('en-AU')
+
+  //then pin to doc, assuming we just have a section or something that makes us a clock
+  document.getElementById('clock').innerHTML = localTime
+
+}
+
+setInterval(time, 1000)
